@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-#SBATCH –p instruction
+#SBATCH -p instruction
 #SBATCH --cpus-per-task=2
 #SBATCH --job-name=FirstSlurm
 
