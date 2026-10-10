@@ -6,7 +6,7 @@
 #SBATCH --job-name=Task3TS
 #SBATCH --output=task3_ts.out
 #SBATCH --error=task3_ts.err
-#SBATCH --time=0-01:00:00
+#SBATCH --time=0-00:10:00
 
 g++ task3.cpp msort.cpp -Wall -O3 -std=c++17 -o task3 -fopenmp
 
