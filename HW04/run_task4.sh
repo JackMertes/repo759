@@ -8,10 +8,14 @@
 #SBATCH --error=Task4.err
 #SBATCH --time=0-00:30:00
 
+# threads sleep at barriers instead of spinning, so one delayed thread
+# doesn't stall the others when all 8 cores are in use
+export OMP_WAIT_POLICY=passive
+
 sed "s/#pragma omp parallel for.*/#pragma omp parallel for schedule(static)/" task3.cpp > task3_static.cpp
 g++ task3_static.cpp -Wall -O3 -std=c++17 -o task3_static -fopenmp
 
-echo "static" > task4_static.txt
+echo "Scheduling: static" > task4_static.txt
 
 for t in {1..8}
 do
