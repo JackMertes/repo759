@@ -20,7 +20,7 @@ const double board_size = 4.0; // Size of the board
 // Function to calculate acceleration due to gravity
 void getAcc(const double pos[][3], const double mass[], double acc[][3], int N) {
 
-    #pragma omp parallel for
+    #pragma omp parallel for schedule(static)
     for (int i = 0; i < N; i++) {
         acc[i][0] = 0.0;
         acc[i][1] = 0.0;
@@ -149,7 +149,7 @@ int main(int argc, char *argv[]) {
     for (int step = 0; step < Nt; step++) {
         
         // (1/2) kick
-        #pragma omp parallel for
+        #pragma omp parallel for schedule(static)
         for (int i = 0; i < N; i++) {
             vel[i][0] += acc[i][0] * dt / 2.0;
             vel[i][1] += acc[i][1] * dt / 2.0;
@@ -157,7 +157,7 @@ int main(int argc, char *argv[]) {
         }
 
         // Drift
-        #pragma omp parallel for
+        #pragma omp parallel for schedule(static)
         for (int i = 0; i < N; i++) {
             pos[i][0] += vel[i][0] * dt;
             pos[i][1] += vel[i][1] * dt;
@@ -165,7 +165,7 @@ int main(int argc, char *argv[]) {
         }
 
         // Ensure particles stay within the board limits
-        #pragma omp parallel for
+        #pragma omp parallel for schedule(static)
         for (int i = 0; i < N; i++) {
             for (int k = 0; k < 3; k++) {
                 if (pos[i][k] > board_size)
@@ -179,7 +179,7 @@ int main(int argc, char *argv[]) {
         getAcc(pos, mass, acc, N);
 
         // (1/2) kick
-        #pragma omp parallel for
+        #pragma omp parallel for schedule(static)
         for (int i = 0; i < N; i++) {
             vel[i][0] += acc[i][0] * dt / 2.0;
             vel[i][1] += acc[i][1] * dt / 2.0;
