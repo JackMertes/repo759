@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 #SBATCH -p instruction
+#SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=4G
 #SBATCH --job-name=Task1
