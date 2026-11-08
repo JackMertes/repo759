@@ -1,12 +1,12 @@
 #!/usr/bin/env zsh
 #SBATCH -p instruction
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=4G
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=2G
 #SBATCH --job-name=Task3
 #SBATCH --output=Task3.out
 #SBATCH --error=Task3.err
-#SBATCH --time=0-01:00:00
+#SBATCH --time=0-00:10:00
 #SBATCH --gpus-per-task=1
 
 module load nvidia/cuda
