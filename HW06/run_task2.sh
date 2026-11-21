@@ -1,4 +1,3 @@
-
 #!/usr/bin/env zsh
 
 #SBATCH -p instruction
@@ -8,7 +7,7 @@
 #SBATCH --job-name=Task2
 #SBATCH --output=Task2.out
 #SBATCH --error=Task2.err
-#SBATCH --time=0-01:00:00
+#SBATCH --time=0-00:10:00
 #SBATCH --gpus-per-task=1
 
 module load nvidia/cuda
